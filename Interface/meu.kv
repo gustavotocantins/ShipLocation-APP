@@ -1,0 +1,75 @@
+#:kivy 2.0.0
+#:import Window kivy.core.window.Window
+
+<Tela1>
+    canvas:
+        Color:
+            rgba: 0, 0.592, 0.698, 1
+        Rectangle:
+            size: self.size
+            pos: self.pos
+
+    FloatLayout:
+        AsyncImage:
+            source: 'image/logo_inicial.png'
+            size_hint: 1,0.3
+            pos_hint: {'center_x':0.5, 'center_y':0.60}
+        
+
+        Button:
+            id: trocar
+            text: 'START'
+            bold: True
+            size_hint: None, None
+            background_normal: 'image/botão_inicial.png'
+            background_down: 'image/botão_inicial.png'
+            background_color: 0, 0.592, 0.698, 1
+            size: 300,50
+            pos_hint: {'center_x':0.5, 'center_y':0.35}
+            on_press: root.entrar_tela1()
+
+<Tela2>
+
+    BoxLayout:
+        orientation: 'vertical'
+        spacing: 10
+        canvas:
+            Color:
+                rgba: 0, 0.592, 0.698, 1
+            Rectangle:
+                size: self.size
+                pos: self.pos
+
+        #Parte de cima
+        BoxLayout:
+
+            orientation: 'vertical'
+            Label:
+                text: 'Titulo'
+        #parte de baixo (geral)
+
+        BoxLayout:
+            orientation: 'vertical'
+
+            #Informações de entrada
+            BoxLayout:
+                orientation: 'horizontal'
+
+                Label:
+                    text: 'Titulo'
+                Label:
+                    text: 'Titulo 2'
+                Label:
+                    text: 'Titulo 3'
+
+            #Exibir informações capturadas
+            BoxLayout:
+                orientation: 'vertical'
+                Label:
+                    text: 'Exibir informações aqui'
+            
+            BoxLayout:
+                orientation: 'vertical'
+                Button:
+                    text: 'buscar'
+                    on_press: root.entrar_tela2()

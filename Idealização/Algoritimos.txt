@@ -1,0 +1,10 @@
+===================== (CLICAR NO BOTÃO) ========================
+- VERIFICAR IMO DA EMBARCAÇÃO
+SOMENTE NUMERICO > TAMANHO CORRETO
+
+- VERIFICAR DATA INICIAL E FINAL
+VERIFICAR SE FOI ADICIONADO > SOMENTE NUMERICO > FORMATO CORRETO
+
+
+===================== (VERIFICAÇÃO DE VALIDADE DO PROGRAMA) ========================
+- Criar um sistema de usuario e senha
