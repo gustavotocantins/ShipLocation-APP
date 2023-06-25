@@ -14,7 +14,7 @@ import pandas as pd
 import openpyxl
 from selenium.webdriver.edge.options import Options
 
-def abrir_pagina(imo):
+def abrir_pagina(datas,imo=9435478):
     # Criar uma nova instância do WebDriver em cada processo
     navegador = webdriver.Edge()  # Substitua pelo driver desejado e forneça o caminho correto
     wait = WebDriverWait(navegador, 30)
@@ -51,20 +51,19 @@ def abrir_pagina(imo):
         df_atualizado = pd.concat([existing_df, novos_df], ignore_index=True)
         df_atualizado.to_excel(rf'{imo}.xlsx', index=False)
 
-    datas_geral = """2023-02-10
-        2023-02-11
-        2023-02-12
-        2023-02-13"""
+    datas_geral = datas
     datas_geral = datas_geral.split('\n')
 
     for data in datas_geral:
         print(f'Dia: {data}')
         navegador.get(f"https://www.marinetraffic.com/en/data/?asset_type=vessel_positions&columns=timestamp,source,speed,course,lat_of_latest_position,lon_of_latest_position,show_on_live_map&quicksearch|begins|{imo}|quicksearch_vessel=313347&time_range|range_date|time_range={data},{data}")
-        time.sleep(7)
+        time.sleep(10)
         navegador.get(f"https://www.marinetraffic.com/en/data/?asset_type=vessel_positions&columns=timestamp,source,speed,course,lat_of_latest_position,lon_of_latest_position,show_on_live_map&quicksearch|begins|{imo}|quicksearch_vessel=313347&time_range|range_date|time_range={data},{data}")
         print("ATUALIZAÇÃO DO ENDEREÇO")
+        time.sleep(5)
 
         for y in range(10):  
+            time.sleep(2)
             print('INCIANDO A RASPAGEM DOS DADOS')
             print(f'Página [{y+1}]')
             dados = {}
@@ -124,6 +123,62 @@ def multiprocessadores(urls):
 
 if __name__ == '__main__':
     # URLs de exemplo
-    urls = ['9435478', '9255323']
+    data1 = """2023-02-10
+2023-02-11
+2023-02-12
+2023-02-13
+2023-02-14
+2023-02-15
+2023-02-16
+2023-02-17
+2023-02-18
+2023-02-19
+2023-02-20
+2023-02-21
+2023-02-22
+2023-02-23
+2023-02-24
+2023-02-25
+2023-02-26
+2023-02-27
+2023-02-28"""
 
-    multiprocessadores(urls)
+    data2 = """2023-03-01
+2023-03-02
+2023-03-03
+2023-03-04
+2023-03-05
+2023-03-06
+2023-03-07
+2023-03-08
+2023-03-09
+2023-03-10
+2023-03-11
+2023-03-12
+2023-03-13
+2023-03-14
+2023-03-15
+2023-03-16
+2023-03-17
+2023-03-18
+2023-03-19
+2023-03-20
+2023-03-21
+2023-03-22
+2023-03-23
+2023-03-24
+2023-03-25
+2023-03-26
+2023-03-27
+2023-03-28
+2023-03-29
+2023-03-30
+2023-03-31"""
+
+    datas = [data1,data2]
+
+
+    multiprocessadores(datas)
+
+
+    
