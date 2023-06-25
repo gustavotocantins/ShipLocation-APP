@@ -36,7 +36,7 @@ def abrir_pagina(datas,imo=9435478):
 
     aceitar_login = wait.until(EC.visibility_of_element_located((By.XPATH, '//*[@id="login_form_submit"]')))
     aceitar_login.click()
-    time.sleep(12)
+    time.sleep(13)
 
     def salvar(dados):
         print('SALVAR OS DADOS')
