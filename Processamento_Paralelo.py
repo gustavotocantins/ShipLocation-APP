@@ -39,6 +39,7 @@ def abrir_pagina(imo):
     time.sleep(12)
 
     def salvar(dados):
+        print('SALVAR OS DADOS')
         try:
             existing_df = pd.read_excel(rf'{imo}.xlsx')
         except FileNotFoundError:
@@ -54,15 +55,17 @@ def abrir_pagina(imo):
         2023-02-11
         2023-02-12
         2023-02-13"""
+    datas_geral = datas_geral.split('\n')
 
     for data in datas_geral:
         print(f'Dia: {data}')
         navegador.get(f"https://www.marinetraffic.com/en/data/?asset_type=vessel_positions&columns=timestamp,source,speed,course,lat_of_latest_position,lon_of_latest_position,show_on_live_map&quicksearch|begins|{imo}|quicksearch_vessel=313347&time_range|range_date|time_range={data},{data}")
         time.sleep(7)
         navegador.get(f"https://www.marinetraffic.com/en/data/?asset_type=vessel_positions&columns=timestamp,source,speed,course,lat_of_latest_position,lon_of_latest_position,show_on_live_map&quicksearch|begins|{imo}|quicksearch_vessel=313347&time_range|range_date|time_range={data},{data}")
-        
-        #Loop para pular de página (50itens)
+        print("ATUALIZAÇÃO DO ENDEREÇO")
+
         for y in range(10):  
+            print('INCIANDO A RASPAGEM DOS DADOS')
             print(f'Página [{y+1}]')
             dados = {}
 
@@ -107,32 +110,6 @@ def abrir_pagina(imo):
             pular = wait.until(EC.visibility_of_element_located((By.XPATH, f'//*[@id="reporting_ag_grid"]/div/div[2]/div[3]/div/div/div/div/div[3]/button[2]')))
             pular.click()
 
-
-
-    # Monitorar o consumo de memória e CPU
-    process = psutil.Process()
-    memory_before = process.memory_info().rss
-    cpu_percent_before = psutil.cpu_percent(interval=None, percpu=True)
-
-    # Manter a página aberta por um tempo
-    time.sleep(10)
-
-
-    # Monitorar o consumo de memória e CPU após fechar o WebDriver
-    memory_after = process.memory_info().rss
-    cpu_percent_after = psutil.cpu_percent(interval=None, percpu=True)
-
-    # Obter o número de processadores
-    num_processors = psutil.cpu_count()
-
-    # Imprimir os resultados para cada processador
-    for i in range(num_processors):
-        print(f"  Thread {i+1}:")
-        print(f"  Consumo de memória antes: {memory_before} bytes")
-        print(f"  Consumo de memória depois: {memory_after} bytes")
-        print(f"  Uso de CPU antes: {cpu_percent_before[i]}%")
-        print(f"  Uso de CPU depois: {cpu_percent_after[i]}%")
-        print()
 
 def multiprocessadores(urls):
     # Criar um pool de processos com o número de processos desejado
