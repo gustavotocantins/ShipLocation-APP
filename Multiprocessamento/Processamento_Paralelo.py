@@ -43,15 +43,15 @@ def abrir_pagina(datas,imo=9435478):
         nome_salvar = datas_geral[0][5:7]
 
         try:
-            existing_df = pd.read_excel(rf'{nome_salvar}.xlsx')
+            existing_df = pd.read_excel(rf'../IMO/{nome_salvar}.xlsx')
         except FileNotFoundError:
             d = openpyxl.Workbook()
-            d.save(f'{nome_salvar}.xlsx')
-            existing_df = pd.read_excel(rf'{nome_salvar}.xlsx')
+            d.save(f'../IMO/{nome_salvar}.xlsx')
+            existing_df = pd.read_excel(rf'../IMO/{nome_salvar}.xlsx')
 
         novos_df = pd.DataFrame(dados)
         df_atualizado = pd.concat([existing_df, novos_df], ignore_index=True)
-        df_atualizado.to_excel(rf'{nome_salvar}.xlsx', index=False)
+        df_atualizado.to_excel(rf'../IMO/{nome_salvar}.xlsx', index=False)
 
     datas_geral = datas
     datas_geral = datas_geral.split('\n')
@@ -106,7 +106,7 @@ def abrir_pagina(datas,imo=9435478):
                     salvar(dados)
 
             except TimeoutException:
-                navegador.quit()
+                
                 break
 
             #pular de pagina
@@ -181,8 +181,4 @@ if __name__ == '__main__':
 
     datas = [data1,data2]
 
-
     multiprocessadores(datas)
-
-
-    
