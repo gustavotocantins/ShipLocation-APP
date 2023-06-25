@@ -29,10 +29,9 @@
             on_press: root.entrar_tela1()
 
 <Tela2>
-
     BoxLayout:
         orientation: 'vertical'
-        spacing: 10
+        #spacing: 10
         canvas:
             Color:
                 rgba: 0, 0.592, 0.698, 1
@@ -40,12 +39,22 @@
                 size: self.size
                 pos: self.pos
 
-        #Parte de cima
         BoxLayout:
-
+            canvas:
+                Color:
+                    rgba: 1, 1, 1, 1
+                Rectangle:
+                    size: self.size
+                    pos: self.pos
             orientation: 'vertical'
+            AsyncImage:
+                source: 'image/logo_escuro.png'
+                size_hint: 1,0.3
+                #pos_hint: {'center_x':0.5, 'center_y':0.60}
+        #Parte de cima
             Label:
                 text: 'Titulo'
+                
         #parte de baixo (geral)
 
         BoxLayout:

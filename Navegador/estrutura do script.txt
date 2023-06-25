@@ -1,0 +1,5 @@
+- Funcionalidade para a aplicação no software
+
+Dados de entrada: 
+(IMO) - (DATA INICIAL) - (DATA FINAL)
+processar e sair
