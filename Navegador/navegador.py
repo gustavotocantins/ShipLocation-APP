@@ -15,8 +15,8 @@ class iniciar():
         #Configurações iniciais
         self.edge_path = 'msedgedriver.exe'
         self.service = Service(executable_path=self.edge_path)
-        navegador = webdriver.Edge(service=self.service,)
-
+        self.navegador = webdriver.Edge(service=self.service)
+        
         #Definir tempo de espera
         self.wait = WebDriverWait(self.navegador, 30)
 
@@ -43,7 +43,6 @@ class iniciar():
 
     def extrair(self,imo,periodo):
         def salvar(dados):
-            
             try:
                 existing_df = pd.read_excel(rf'{imo}.xlsx')
             except FileNotFoundError:
@@ -54,7 +53,6 @@ class iniciar():
             novos_df = pd.DataFrame(dados)
             df_atualizado = pd.concat([existing_df, novos_df], ignore_index=True)
             df_atualizado.to_excel(rf'{imo}.xlsx', index=False)
-
 
         datas_geral = periodo.split('\n')
 
