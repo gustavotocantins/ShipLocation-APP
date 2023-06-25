@@ -106,11 +106,12 @@ def abrir_pagina(datas,imo=9435478):
                     salvar(dados)
 
             except TimeoutException:
+                navegador.quit()
                 break
             #pular de pagina
             pular = wait.until(EC.visibility_of_element_located((By.XPATH, f'//*[@id="reporting_ag_grid"]/div/div[2]/div[3]/div/div/div/div/div[3]/button[2]')))
             pular.click()
-
+        
 
 def multiprocessadores(urls):
     # Criar um pool de processos com o número de processos desejado
