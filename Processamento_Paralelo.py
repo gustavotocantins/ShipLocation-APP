@@ -36,7 +36,7 @@ def abrir_pagina(datas,imo=9435478):
 
     aceitar_login = wait.until(EC.visibility_of_element_located((By.XPATH, '//*[@id="login_form_submit"]')))
     aceitar_login.click()
-    time.sleep(13)
+    time.sleep(12)
 
     def salvar(dados):
         print('SALVAR OS DADOS')
@@ -108,6 +108,7 @@ def abrir_pagina(datas,imo=9435478):
             except TimeoutException:
                 navegador.quit()
                 break
+
             #pular de pagina
             pular = wait.until(EC.visibility_of_element_located((By.XPATH, f'//*[@id="reporting_ag_grid"]/div/div[2]/div[3]/div/div/div/div/div[3]/button[2]')))
             pular.click()
