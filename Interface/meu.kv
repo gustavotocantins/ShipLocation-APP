@@ -58,27 +58,62 @@
 
         BoxLayout:
             orientation: 'vertical'
+            spacing: 10
             #Informações de entrada
+            
             BoxLayout:
                 orientation: 'vertical'
-                size_hint: 1,0.25
-
+                size_hint: 1,0.10
 
                 TextInput:
-                    size_hint: 0.8,1
-                    padding: 23
+                    size_hint: 0.9,1
                     hint_text: 'IMO DA EMBARCAÇÃO'
+                    background_normal: 'image/imo_embarcacao.png'
+                    background_down: 'image/imo_embarcacao.png'
                     multiline: False
                     pos_hint: {'center_x':0.5, 'center_y':0.50}
 
+            #entrada das datas
+            BoxLayout:
+                orientation: 'horizontal'
+                size_hint: 0.9,0.17
+                pos_hint: {'center_x':0.5, 'center_y':0.50}
+                spacing: 20
+                BoxLayout:
+                    orientation: 'vertical'
+                    Label:
+                        text: 'DATA INICIAL'
+                    TextInput:
+                        hint_text: '09/10/2002'
+                        background_normal: 'image/imo_embarcacao.png'
+                    
+                BoxLayout:
+                    orientation: 'vertical'
+                    Label:
+                        text: 'DATA FINAL'
+                    TextInput:
+                        hint_text: '09/10/2022'
+                        background_normal: 'image/imo_embarcacao.png'
             #Exibir informações capturadas
             BoxLayout:
                 orientation: 'vertical'
+
+                ProgressBar:
+                    max: 100
+                    value: 50
+                    size_hint_x: 1
+                    size_hint_y: 1
+                
                 Label:
                     text: 'Exibir informações aqui'
             
             BoxLayout:
                 orientation: 'vertical'
+                size_hint_y: 0.15
                 Button:
                     text: 'buscar'
+                    size_hint_x: 0.6
+                    pos_hint: {'center_x':0.5, 'center_y':1}
+                    background_normal: 'image/botão_inicial.png'
+                    background_down: 'image/botão_inicial.png'
                     on_press: root.entrar_tela2()

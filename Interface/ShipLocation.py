@@ -5,7 +5,6 @@ from kivy.uix.screenmanager import ScreenManager, Screen, FadeTransition
 from kivy.config import Config
 
 #Utilizando o navegador
-#import navegador.controlador as navegar
 
 def tamanho_tela():
     from screeninfo import get_monitors
