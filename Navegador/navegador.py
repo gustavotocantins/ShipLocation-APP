@@ -203,4 +203,4 @@ entrada_periodo = """2023-02-10
 2023-05-10
 2023-05-11"""
 
-instancia.extrair('9435478', entrada_periodo)
+instancia.extrair('9626443', entrada_periodo)
